@@ -28,7 +28,8 @@ Data_PATH_User = dbutils.widgets.get("Data_PATH_User")
 
 # MAGIC %sh
 # MAGIC # Pull CSV file from url
-# MAGIC cd /dbfs/FileStore/
+# MAGIC mkdir /dbfs/tmp_downloads/
+# MAGIC cd /dbfs/tmp_downloads/
 # MAGIC wget -nc https://lafkkbox.blob.core.windows.net/kkbox/KKBox-Dataset-orig/transactions_v2.csv
 # MAGIC wget -nc https://lafkkbox.blob.core.windows.net/kkbox/KKBox-Dataset-orig/train_v2.csv
 # MAGIC wget -nc https://lafkkbox.blob.core.windows.net/kkbox/KKBox-Dataset-orig/members/members_v3.csv
@@ -41,7 +42,7 @@ Data_PATH_User = dbutils.widgets.get("Data_PATH_User")
 # COMMAND ----------
 
 # MAGIC %sh
-# MAGIC cd /dbfs/FileStore
+# MAGIC cd /dbfs/tmp_downloads
 # MAGIC ls
 
 # COMMAND ----------
@@ -50,35 +51,35 @@ dbutils.fs.mkdirs(Data_PATH_Ingest)
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/transactions_v2.csv", Data_PATH_Ingest + "/" + "transactions_v2.csv")
+dbutils.fs.cp("dbfs:/tmp_downloads/transactions_v2.csv", Data_PATH_Ingest + "/" + "transactions_v2.csv")
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/train_v2.csv", Data_PATH_Ingest + "/" + "train_v2.csv")
+dbutils.fs.cp("dbfs:/tmp_downloads/train_v2.csv", Data_PATH_Ingest + "/" + "train_v2.csv")
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/members_v3.csv", Data_PATH_Ingest + "/members/" + "members_v3.csv")
+dbutils.fs.cp("dbfs:/tmp_downloads/members_v3.csv", Data_PATH_Ingest + "/members/" + "members_v3.csv")
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/user_logs_v2.csv", Data_PATH_Ingest + "/user_logs/" + "user_logs_v2.csv")
+dbutils.fs.cp("dbfs:/tmp_downloads/user_logs_v2.csv", Data_PATH_Ingest + "/user_logs/" + "user_logs_v2.csv")
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/part-00000-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-0-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00000-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-0-1-c000.snappy.parquet")
+dbutils.fs.cp("dbfs:/tmp_downloads/part-00000-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-0-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00000-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-0-1-c000.snappy.parquet")
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/part-00001-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-1-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00001-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-1-1-c000.snappy.parquet")
+dbutils.fs.cp("dbfs:/tmp_downloads/part-00001-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-1-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00001-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-1-1-c000.snappy.parquet")
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/part-00002-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-2-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00002-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-2-1-c000.snappy.parquet")
+dbutils.fs.cp("dbfs:/tmp_downloads/part-00002-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-2-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00002-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-2-1-c000.snappy.parquet")
 
 # COMMAND ----------
 
-dbutils.fs.cp("dbfs:/FileStore/part-00003-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-3-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00003-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-3-1-c000.snappy.parquet")
+dbutils.fs.cp("dbfs:/tmp_downloads/part-00003-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-3-1-c000.snappy.parquet", Data_PATH_Ingest + "/transactions/" + "part-00003-tid-5999996899273686881-0be686b1-961c-40c0-a95f-db3350c2865c-3-1-c000.snappy.parquet")
 
 # COMMAND ----------
 
